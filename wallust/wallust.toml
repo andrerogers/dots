@@ -1,0 +1,12 @@
+backend = 'full' 
+filter = 'dark'
+threshold = 20
+color_space = 'lab'
+
+[[entry]]
+template = 'templates/colors-hypr.conf'
+target = '~/.config/hypr/themes/wallust.conf'
+
+dir.template = 'templates/'
+dir.pywal = true
+
