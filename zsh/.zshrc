@@ -26,3 +26,10 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+# Handle SSH agent
+eval "$(ssh-agent -s)" >/dev/null 2>&1
+
+# Add SSH keys
+ssh-add ~/.ssh/jarvis >/dev/null 2>&1
+
