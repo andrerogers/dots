@@ -12,6 +12,8 @@ vim.opt.swapfile = false
 
 vim.opt.completeopt = "menu,menuone"
 
+vim.opt_local.conceallevel = 2
+
 -- Navigate vim panes seamlessly with tmux
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<C-j>", ":wincmd j<CR>")
