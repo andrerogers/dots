@@ -21,7 +21,7 @@ local opts = {}
 if vim.fn.has("termguicolors") == 1 then
   vim.o.termguicolors = true
 end
-vim.o.background = "dark" 
+vim.o.background = "dark"
 
 require("vim-options")
 require("lazy").setup("plugins")
