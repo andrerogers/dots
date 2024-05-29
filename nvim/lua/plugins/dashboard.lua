@@ -27,7 +27,7 @@ return {
 		starter.setup({
 			-- evaluate_single = true,
 			items = {
-				starter.sections.sessions(77, true),
+				starter.sections.sessions(5, true),
 				starter.sections.builtin_actions(),
 				starter.sections.telescope(),
 			},
