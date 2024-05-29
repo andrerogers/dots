@@ -6,6 +6,7 @@ alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias n="nvim"
 alias t="tmux"
+alias tp="tmuxp"
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias df="df -h" # Human readable sizes
 

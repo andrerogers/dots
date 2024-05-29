@@ -11,9 +11,7 @@ return {
     ---@return function
     local function session(scope)
       return function()
-        if scope == "local" then
-          MiniSessions.write("session.vim")
-        elseif scope == "write" then
+        if scope == "write" then
           local session_name = vim.fn.input("Enter session name: ")
           MiniSessions.write(session_name)
         else
@@ -28,14 +26,13 @@ return {
       -- Whether to write current session before quitting Neovim
       autowrite = true,
       directory = ".sessions",
-      file = "",
+      file = '',
       verbose = {
         read = true,
       },
     })
 
     -- Mappings
-    vim.keymap.set("n", "<Leader>sl", session("local"), {})
     vim.keymap.set("n", "<Leader>sw", session("write"), {})
     vim.keymap.set("n", "<Leader>sr", session("read"), {})
     vim.keymap.set("n", "<Leader>sd", session("delete"), {})
