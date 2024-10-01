@@ -7,6 +7,13 @@ color_space = 'lab'
 template = 'templates/colors-hypr.conf'
 target = '~/.config/hypr/themes/wallust.conf'
 
+[[entry]]
+template = 'templates/colors-waybar.conf'
+target = '~/.config/waybar/themes/wallust.css'
+
+[[entry]]
+template = 'templates/colors-wlogout.conf'
+target = '~/.config/wlogout/wallust.css'
+
 dir.template = 'templates/'
 dir.pywal = true
-

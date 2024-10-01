@@ -1,0 +1,148 @@
+{
+  "custom/spotify": {
+    "format": "<span>{}</span>",
+    "return-type": "json",
+    "max-length": 100,
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "killall spotify",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "smooth-scrolling-threshold": 4,
+    "exec": "python3 $HOME/.config/waybar/modules/mediaplayer.py --player spotify",
+    "exec-if": "pgrep spotify"
+  },
+  "custom/updater": {
+    "format": "<span>   {}</span>",
+    "exec": "pacman -Qu | wc -l",
+    "interval": 15,
+    "on-click": "kitty -T update -e sh -c 'sudo pacman -Syu; notify-send \"The system has been updated\"' || kitty -T update -e sh -c 'yay -Syu; notify-send \"AUR packages updated\"'"
+  },
+  "custom/separator": {
+    "format": " | ",
+    "interval": "once",
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [
+      "kitty"
+    ]
+  },
+  "hyprland/window": {
+    "rewrite": {
+      "(.*) - Google Chrome": "$1"
+    },
+    "separate-outputs": true
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{:%A | %F | %H:%M}",
+    "format-alt": "{:%A | %F | %H:%M (Day %j, Week %W, %z / %Z)}",
+    "timezone": "America/Toronto",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "cpu": {
+    "format": "/ C {usage}% ",
+    "on-click": "kitty -e btop"
+  },
+  "memory": {
+    "format": "/ M {}% ",
+    "on-click": "kitty -e btop"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "/ D {percentage_used}% ",
+    "path": "/",
+    "on-click": "kitty -e btop"
+  },
+  "group/hardware": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "not-memory",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "disk",
+      "cpu",
+      "memory"
+    ]
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "   {signalStrength}%",
+    "format-ethernet": "  {ifname}",
+    "format-disconnected": "Disconnected",
+    "tooltip-format": " {ifname} via {gwaddri}",
+    "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "{icon}   {volume}%",
+    "format-bluetooth": "{volume}%  {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
+      "default": [
+        " ",
+        " ",
+        " "
+      ]
+    },
+    "on-click": "pavucontrol-qt"
+  },
+  "group/audio": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "pulseaudio/slider"
+    ]
+  },
+  "user": {
+    "format": "{user}",
+    "interval": 60,
+    "icon": false
+  },
+  "custom/power": {
+    "format": "",
+    "on-click": "wlogout",
+    "interval": 0
+  }
+}

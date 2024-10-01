@@ -4,14 +4,37 @@ return {
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/nvim-nio",
 		"leoluz/nvim-dap-go",
-    'mfussenegger/nvim-dap-python',
+		"mfussenegger/nvim-dap-python",
 	},
 	config = function()
 		local dap = require("dap")
 		local dapui = require("dapui")
 
+		dap.adapters.lldb = {
+			type = "server",
+			host = "127.0.0.1",
+			port = "13000",
+		}
+
+		dap.configurations.cpp = {
+			{
+				name = "Launch",
+				type = "lldb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
+				args = {},
+			},
+		}
+
+		dap.configurations.c = dap.configurations.cpp
+
 		dapui.setup({})
 		require("dap-go").setup({})
+		require("dap-python").setup("/usr/bin/python3") -- Use your Python path here
 
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()

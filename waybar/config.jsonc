@@ -1,0 +1,43 @@
+{
+  // General Settings
+  "reload_style_on_change": true,
+  // Position TOP
+  "layer": "top",
+  "margin-bottom": 0,
+  // Position BOTTOM
+  // "position": "bottom",
+  // "margin-top": 0,
+  // "margin-bottom": 14,
+  "margin-left": 20,
+  "margin-right": 0,
+  "spacing": 10,
+  // Load Modules
+  "include": [
+    "~/dots/waybar/modules/modules.json"
+  ],
+  // Modules Left
+  "modules-left": [
+    "custom/power",
+    "custom/separator",
+    "wlr/taskbar",
+    "hyprland/window"
+  ],
+  // Modules Center
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  // Modules Right
+  "modules-right": [
+    "custom/spotify",
+    "custom/updater",
+    "pulseaudio",
+    "pulseaudio/slider",
+    "cpu",
+    "memory",
+    "disk",
+    "user",
+    "custom/separator",
+    "network",
+    "clock"
+  ]
+}
